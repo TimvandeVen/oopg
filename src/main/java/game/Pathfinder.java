@@ -181,12 +181,14 @@ public class Pathfinder extends GameEngine {
     }
 
     /**
+     * Loads the next level when the current level is finished.
+     *
      * @since 1.0
      */
     @Override
     public void update() {
         if (this.level.levelComplete()) {
-
+            this.loadLevel(level.getCurrentLevel() + 1);
         }
     }
 

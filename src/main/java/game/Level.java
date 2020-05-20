@@ -1,5 +1,7 @@
 package game;
 
+import game.buttons.threadButton;
+
 /**
  * Level class
  *
@@ -39,6 +41,7 @@ public class Level {
      * @since 1.0
      */
     private void setupLevel() {
+        main.addGameObject(new threadButton(main), Pathfinder.width - Pathfinder.TILE_SIZE - 10, 10, 5);
         main.addGameObject(player, player.location.x * Pathfinder.TILE_SIZE, player.location.y * Pathfinder.TILE_SIZE, 2);
     }
 
