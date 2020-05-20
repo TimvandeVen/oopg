@@ -13,12 +13,12 @@ public class GameThread implements Runnable {
     /**
      * This logger is used to output information to a console or file.
      */
-    private Logger logger = LogFactory.getLogger();
+    private final Logger logger = LogFactory.getLogger();
 
     /**
      * Needed to call update method from GameEngine
      */
-    private GameEngine gameEngine;
+    private final GameEngine gameEngine;
 
     /**
      * Thread for the gamelogic.

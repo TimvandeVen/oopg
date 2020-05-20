@@ -10,7 +10,7 @@ import processing.core.PImage;
 
 public class PGraphicsMock extends PGraphics // May only be used inside the test package
 {
-	private List<GameObject> objects = new ArrayList<GameObject>();
+	private final List<GameObject> objects = new ArrayList<GameObject>();
 	private float[] backgroundRGB = new float[] { -1, -1, -1 };
 	private int[] fillRGBA = new int[] { -1, -1, -1, -1 };
 	private int textSize = -1;
@@ -46,7 +46,7 @@ public class PGraphicsMock extends PGraphics // May only be used inside the test
 	@Override 
 	public void text(String str, float x, float y)  {
 	
-		TextObject obj = new TextObject(str, (int)textSize);
+		TextObject obj = new TextObject(str, textSize);
 		obj.setX(x);
 		obj.setY(y);
 		obj.setForeColor(fillRGBA[0], fillRGBA[1], fillRGBA[2], fillRGBA[3]);
@@ -64,8 +64,8 @@ public class PGraphicsMock extends PGraphics // May only be used inside the test
 	public void textSize(float size) {
 		
 		this.textSize = (int)size;
-	};
-	
+	}
+
 	public List<GameObject> getGameObjects() {
 		
 		return objects;
@@ -77,8 +77,11 @@ public class PGraphicsMock extends PGraphics // May only be used inside the test
 	}
 	
 	// These overrides are neccesarrily because PImages throws runtime errors.
-	@Override public void pushMatrix() { };
-	@Override public void resetMatrix() { };
-	@Override public void popMatrix() { };
-	@Override public void blendMode(int mode) { };
+	@Override public void pushMatrix() { }
+
+	@Override public void resetMatrix() { }
+
+	@Override public void popMatrix() { }
+
+	@Override public void blendMode(int mode) { }
 }

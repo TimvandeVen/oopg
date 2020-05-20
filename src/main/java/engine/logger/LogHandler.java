@@ -5,5 +5,5 @@ package engine.logger;
  */
 public interface LogHandler {
 	
-    public void logln(int level, String message);
+    void logln(int level, String message);
 }

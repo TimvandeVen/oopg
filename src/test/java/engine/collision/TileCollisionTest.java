@@ -18,22 +18,22 @@ import static org.junit.Assert.assertTrue;
 
 
 public class TileCollisionTest {
-    private GameEngine gameEngine = new GameEngineMock();
+    private final GameEngine gameEngine = new GameEngineMock();
     private FakeGameObject fakeGameObject;
     private TileMap tileMap;
 
-    private Sprite testSprite = new Sprite(new PImage(50, 50));
+    private final Sprite testSprite = new Sprite(new PImage(50, 50));
     TileType<MockTile> mockTileTileType = new TileType<>(MockTile.class, testSprite);
     TileType[] testTileTypes = {mockTileTileType};
 
-    private int[][] testMap = {
+    private final int[][] testMap = {
             {-1, -1, -1, -1, -1},
             {-1, 0, -1, -1, -1},
             {-1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1},
             {-1, -1, -1, -1, -1}
     };
-    private int testTileSize = 50;
+    private final int testTileSize = 50;
 
     @Before
     public void setup() {

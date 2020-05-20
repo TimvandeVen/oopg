@@ -15,5 +15,5 @@ public interface ICollidableWithGameObjects {
 	 * 
 	 * @param collidedGameObjects The GameObjects with which a collision should be detected
 	 */
-	public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects);
+    void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects);
 }

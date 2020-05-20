@@ -22,9 +22,9 @@ import java.io.OutputStreamWriter;
  */
 public class FilePersistence implements IPersistence {
 
-    private Logger logger = LogFactory.getLogger();
+    private final Logger logger = LogFactory.getLogger();
 
-    private String filename;
+    private final String filename;
 
     /**
      * The constructor allows you to specify the filename the internal storage

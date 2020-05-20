@@ -22,7 +22,7 @@ public class Dashboard extends GameObject {
 
     private PGraphicsCreator pGraphicsCreator = new PGraphicsCreator();
 
-    private Vector<GameObject> gameObjects = new Vector<>();
+    private final Vector<GameObject> gameObjects = new Vector<>();
 
     public Dashboard(float x, float y, float width, float height) {
         super(x, y, width, height);

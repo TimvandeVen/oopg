@@ -66,7 +66,7 @@ public final class DefaultLogger implements Logger {
     @Override
     public boolean logln(int level, String message) {
 
-        // Valid log level?
+        // Valid log Level?
         if (!isValidLogLevel(level)) {
             return false;
         }

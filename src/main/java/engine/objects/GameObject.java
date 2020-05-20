@@ -19,7 +19,7 @@ public abstract class GameObject implements IKeyInput, IMouseInput, PConstants {
     protected float prevX;
     protected float prevY;
 
-    private PVector velocity = new PVector(0, 0);
+    private final PVector velocity = new PVector(0, 0);
     private float speed;
     private float friction;
     private float direction;

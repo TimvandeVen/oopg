@@ -56,7 +56,7 @@ public class CollidedTile {
 	 */
 	public CollidedTile(Tile tile, int collissionSide) {
 		theTile = tile;
-		collisionSide = (CollisionSide) collisionSide;
+		collisionSide = collisionSide;
 	}
 	
 	/**

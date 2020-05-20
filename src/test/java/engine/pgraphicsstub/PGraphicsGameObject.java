@@ -6,7 +6,7 @@ import processing.core.PImage;
 
 public class PGraphicsGameObject extends GameObject {
 
-	private PImage canvas;
+	private final PImage canvas;
 
 	public PGraphicsGameObject(PImage canvas) {
 

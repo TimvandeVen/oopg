@@ -16,7 +16,7 @@ public abstract class AnimatedSpriteObject extends SpriteObject {
     private int currentFrameIndex;
     private int totalFrames;
 
-    private int frameWidth;
+    private final int frameWidth;
 
     /**
      * Create a new AnimatedSpriteObject with a Sprite and set the amount of total frames.

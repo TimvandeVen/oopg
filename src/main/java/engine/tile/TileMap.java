@@ -15,8 +15,8 @@ public class TileMap {
     private int[][] indexMap;
     private Tile[][] tileMap;
     private TileType[] tileTypes;
-    private Sprite emptySprite = new Sprite(new PImage(0, 0));
-    private TileType<EmptyTile> emptyTileTileType = new TileType<>(EmptyTile.class, emptySprite);
+    private final Sprite emptySprite = new Sprite(new PImage(0, 0));
+    private final TileType<EmptyTile> emptyTileTileType = new TileType<>(EmptyTile.class, emptySprite);
 
     /**
      * Create a new TileMap.

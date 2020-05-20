@@ -8,7 +8,7 @@ import engine.engine.GameEngine;
  */
 public class Sound {
 
-    private AudioPlayer audio;
+    private final AudioPlayer audio;
 
     /**
      * Create a new sound object to play music files.

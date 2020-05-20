@@ -32,12 +32,12 @@ public abstract class GameEngine extends PApplet {
     /**
      * A vectorlist that holds all GameObjects.
      */
-    private Vector<GameObject> gameObjects = new Vector<>();
+    private final Vector<GameObject> gameObjects = new Vector<>();
 
     /**
      * A vectorlist that holds all Dashboards, which are of type GameObject.
      */
-    private Vector<Dashboard> dashboards = new Vector<>();
+    private final Vector<Dashboard> dashboards = new Vector<>();
 
     /**
      * Instance of TileMap.
@@ -47,7 +47,7 @@ public abstract class GameEngine extends PApplet {
     /**
      * Thread is used to keep the update method running.
      */
-    private GameThread gameThread = new GameThread(this);
+    private final GameThread gameThread = new GameThread(this);
 
     /**
      * Creates an instance of minim that helps with loading music in the sound class.
@@ -581,11 +581,11 @@ public abstract class GameEngine extends PApplet {
 
     private static class CollidingHelper {
 
-        private static int topTileSide = 0;
-        private static int rightTileSide = 1;
-        private static int bottomTileSide = 2;
-        private static int leftTileSide = 3;
-        private static int insideTile = 4;
+        private static final int topTileSide = 0;
+        private static final int rightTileSide = 1;
+        private static final int bottomTileSide = 2;
+        private static final int leftTileSide = 3;
+        private static final int insideTile = 4;
 
         private CollidingHelper() {
 

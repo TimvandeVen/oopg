@@ -41,7 +41,7 @@ public class FileLogHandler implements LogHandler {
             //Print timestamp
             osw.write("[" + new SimpleDateFormat("yyyy-mm-dd hh:mm:ss.S").format(new Date()) + "] \n");
 
-            //Print level prefix
+            //Print Level prefix
             osw.write(getLevelPrefix(level));
 
             //Print message
@@ -53,7 +53,7 @@ public class FileLogHandler implements LogHandler {
     }
 
     /**
-     * Gets the prefix of the given level.
+     * Gets the prefix of the given Level.
      * @param level
      * @return String
      */

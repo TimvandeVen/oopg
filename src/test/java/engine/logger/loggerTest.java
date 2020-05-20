@@ -101,7 +101,7 @@ public class loggerTest {
     public void isValidLogLevel0ReturnTrue()
     {
         try {
-            Method method = logger.getClass().getMethod("isValidLogLevel", new Class[]{int.class});
+            Method method = logger.getClass().getMethod("isValidLogLevel", int.class);
             assertTrue((boolean) method.invoke(logger, 0));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -116,7 +116,7 @@ public class loggerTest {
     public void isValidLogLevel1ReturnTrue()
     {
         try {
-            Method method = logger.getClass().getMethod("isValidLogLevel", new Class[]{int.class});
+            Method method = logger.getClass().getMethod("isValidLogLevel", int.class);
             assertTrue((boolean) method.invoke(logger, 1));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -131,7 +131,7 @@ public class loggerTest {
     public void isValidLogLevel2ReturnTrue()
     {
         try {
-            Method method = logger.getClass().getMethod("isValidLogLevel", new Class[]{int.class});
+            Method method = logger.getClass().getMethod("isValidLogLevel", int.class);
             assertTrue((boolean) method.invoke(logger, 2));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -146,7 +146,7 @@ public class loggerTest {
     public void isValidLogLevel3ReturnTrue()
     {
         try {
-            Method method = logger.getClass().getMethod("isValidLogLevel", new Class[]{int.class});
+            Method method = logger.getClass().getMethod("isValidLogLevel", int.class);
             assertTrue((boolean) method.invoke(logger, 3));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -161,7 +161,7 @@ public class loggerTest {
     public void isValidLogLevel4ReturnTrue()
     {
         try {
-            Method method = logger.getClass().getMethod("isValidLogLevel", new Class[]{int.class});
+            Method method = logger.getClass().getMethod("isValidLogLevel", int.class);
             assertTrue((boolean) method.invoke(logger, 4));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
@@ -176,7 +176,7 @@ public class loggerTest {
     public void isValidLogLevel5OrGreaterReturnFalse()
     {
         try {
-            Method method = logger.getClass().getMethod("isValidLogLevel", new Class[]{int.class});
+            Method method = logger.getClass().getMethod("isValidLogLevel", int.class);
             assertFalse((boolean) method.invoke(logger, 5));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
