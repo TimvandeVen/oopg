@@ -18,20 +18,8 @@ public class LevelButton extends Button {
         this.id = id;
     }
 
-    @Override
-    public void mousePressed(int x, int y, int button) {
-        if (button == PConstants.LEFT) {
-            if (x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height) {
-                main.loadLevel(id);
-            }
-        }
-    }
-
-    @Override
-    public void mouseMoved(int x, int y) {
-        if (x > this.x && x < this.x + this.width && y > this.y && y < this.y + this.height) {
-            setCurrentFrameIndex(1);
-        } else setCurrentFrameIndex(0);
+    protected void buttonAction() {
+        main.loadLevel(id);
     }
 
     @Override

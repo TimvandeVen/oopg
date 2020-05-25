@@ -37,6 +37,7 @@ public class Light extends AnimatedSpriteObject {
 
     @Override
     public void update() {
+        // Gebruik alarm
 //        final long time = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - startTime);
 //        System.out.println(lightCharge);
 //        if (lightOn) {

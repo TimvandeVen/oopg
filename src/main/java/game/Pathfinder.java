@@ -13,7 +13,6 @@ import game.tiles.WallTile;
 
 /**
  * Functions as main engine class.
- *
  * @author Tim van de Ven
  * @version 1.0
  * @since 25-05-2020

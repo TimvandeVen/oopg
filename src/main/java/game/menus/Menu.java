@@ -10,6 +10,8 @@ public abstract class Menu {
         TextObject title = new TextObject("Pathfinder", 80);
         title.setForeColor(255, 255, 255, 255);
         main.addGameObject(title, 600, 40);
+
+//        loadButtons();
     }
 
     protected abstract void loadButtons();
