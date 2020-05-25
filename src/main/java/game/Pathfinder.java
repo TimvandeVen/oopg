@@ -13,6 +13,7 @@ import game.tiles.WallTile;
 
 /**
  * Functions as main engine class.
+ *
  * @author Tim van de Ven
  * @version 1.0
  * @since 25-05-2020
@@ -49,7 +50,7 @@ public class Pathfinder extends GameEngine {
         setupView();
         setupTiles();
 
-        new StartMenu(this);
+        new StartMenu(this).loadButtons();
     }
 
     private void setupView() {
@@ -97,12 +98,6 @@ public class Pathfinder extends GameEngine {
                 // Set Tile Map
                 this.setTileMap(new TileMap(Pathfinder.TILE_SIZE, this.tileTypes, tileMap));
 
-                // Level time in seconds
-                int time = 60;
-
-                // Light charge in seconds
-                int lightCharge = 3;
-
                 // Start position for the player
                 Location playerLocation = new Location(2, 2);
 
@@ -110,7 +105,7 @@ public class Pathfinder extends GameEngine {
                 Location goalLocation = new Location(2, 5);
 
                 // Initialize level
-                this.level = new Level(this, time, lightCharge, id, playerLocation, goalLocation);
+                this.level = new Level(this, id, 60, playerLocation, goalLocation);
             }
             break;
             case 1: {
@@ -134,12 +129,6 @@ public class Pathfinder extends GameEngine {
                 // Set Tile Map
                 this.setTileMap(new TileMap(Pathfinder.TILE_SIZE, this.tileTypes, tileMap));
 
-                // Level time in seconds
-                int time = 10;
-
-                // Light charge in seconds
-                int lightCharge = 300;
-
                 // Start position for the player
                 Location playerLocation = new Location(4, 4);
 
@@ -147,7 +136,7 @@ public class Pathfinder extends GameEngine {
                 Location goalLocation = new Location(20, 9);
 
                 // Initialize level
-                this.level = new Level(this, time, lightCharge, id, playerLocation, goalLocation);
+                this.level = new Level(this, id, 30, playerLocation, goalLocation);
             }
             break;
             case 2: {
@@ -171,12 +160,6 @@ public class Pathfinder extends GameEngine {
                 // Set Tile Map
                 this.setTileMap(new TileMap(Pathfinder.TILE_SIZE, this.tileTypes, tileMap));
 
-                // Level time in seconds
-                int time = 60;
-
-                // Light charge in seconds
-                int lightCharge = 3;
-
                 // Start position for the player
                 Location playerLocation = new Location(10, 10);
 
@@ -184,7 +167,7 @@ public class Pathfinder extends GameEngine {
                 Location goalLocation = new Location(10, 12);
 
                 // Initialize level
-                this.level = new Level(this, time, lightCharge, id, playerLocation, goalLocation);
+                this.level = new Level(this, id, 60, playerLocation, goalLocation);
             }
             break;
         }
@@ -195,7 +178,11 @@ public class Pathfinder extends GameEngine {
         if (levelComplete || levelFailed) {
             deleteAllGameOBjects();
             this.setTileMap((new TileMap(Pathfinder.TILE_SIZE, this.tileTypes, emptyTileMap())));
-            new EndMenu(this);
+
+            EndMenu endMenu = new EndMenu(this);
+            endMenu.loadState();
+            endMenu.loadButtons();
+
             levelComplete = false;
             levelFailed = false;
         }

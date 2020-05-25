@@ -38,19 +38,9 @@ public class TextObject extends GameObject {
     public void draw(PGraphics g) {
 
         g.fill(this.r, this.g, this.b, this.alpha);
-	g.textAlign(g.LEFT, g.TOP);
+        g.textAlign(g.LEFT, g.TOP);
         g.textSize(fontSize);
         g.text(text, x, y);
-    }
-
-    /**
-     * Sets the text that will be displayed.
-     *
-     * @param text The text to be set
-     */
-    public void setText(String text) {
-
-        this.text = text;
     }
 
     /**
@@ -64,13 +54,13 @@ public class TextObject extends GameObject {
     }
 
     /**
-     * Sets the font size of the text.
+     * Sets the text that will be displayed.
      *
-     * @param fontSize The value has to be higher than 0.
+     * @param text The text to be set
      */
-    public void setFontSize(int fontSize) {
+    public void setText(String text) {
 
-        this.fontSize = fontSize;
+        this.text = text;
     }
 
     /**
@@ -81,6 +71,16 @@ public class TextObject extends GameObject {
     public int getFontSize() {
 
         return fontSize;
+    }
+
+    /**
+     * Sets the font size of the text.
+     *
+     * @param fontSize The value has to be higher than 0.
+     */
+    public void setFontSize(int fontSize) {
+
+        this.fontSize = fontSize;
     }
 
     /**

@@ -1,6 +1,5 @@
 package game;
 
-import engine.dashboard.FPSCounter;
 import engine.objects.Sprite;
 import engine.tile.Tile;
 
@@ -9,42 +8,24 @@ public class Level {
     // Reference to main engine class
     private final Pathfinder main;
 
-    // Player object
-    private final Player player;
-
-    // Goal object
-    private final Goal goal;
-
-    // Current ID
-    private final int currentLevel;
-
-    // Light Charge
-    private final int lightCharge;
-
-    public Level(Pathfinder main, int time, int lightCharge, int id, Location playerLocation, Location goalLocation) {
+    public Level(Pathfinder main, int id, int gameTime, float batteryTime, Location playerLocation, Location goalLocation) {
         this.main = main;
-        this.currentLevel = id;
-        this.player = new Player(main, playerLocation);
-        this.goal = new Goal(main, goalLocation);
-        this.lightCharge = lightCharge;
 
-        setupLevel();
-        setupCountdown();
-    }
-
-    private void setupLevel() {
-        // FPS Counter
-        main.addGameObject(new FPSCounter(10, 20), 5);
         // Light
-        main.addGameObject(new Light(lightCharge, new Sprite(Pathfinder.MEDIA_URL.concat("light.png")), 2));
+        Light light = new Light(new Sprite(Pathfinder.MEDIA_URL.concat("light.png")), 2, 0.5f);
+        main.addGameObject(light);
+
+        // Battery
+        main.addGameObject(new Battery(new Sprite(Pathfinder.MEDIA_URL.concat("battery.png")), 4, light), 680, 780);
+
+        // Countdown
+        main.addGameObject(new Countdown(main, gameTime));
+
         // Player
-        main.addGameObject(player, 1);
+        main.addGameObject(new Player(main, playerLocation), 1);
+
         // Goal
-        main.addGameObject(goal, 0);
-    }
-
-    private void setupCountdown() {
-
+        main.addGameObject(new Goal(goalLocation), 0);
     }
 
     public Tile getTileAtLocation(Location tileLocation) {

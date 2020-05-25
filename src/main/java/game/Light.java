@@ -3,33 +3,28 @@ package game;
 import engine.objects.AnimatedSpriteObject;
 import engine.objects.Sprite;
 
-import java.util.concurrent.TimeUnit;
-
 public class Light extends AnimatedSpriteObject {
 
-    // Light state
-    public boolean lightOn;
+    // Time of light
+    private final float timeOn;
 
-    public boolean canTurnLightOn;
+    // Light charge in percentage
+    public int lightCharge = 100;
 
-    private int maxLightCharge;
+    // Store light status
+    private boolean lightOn = false;
 
-    private int lightCharge;
+    // Start time
+    private long previousMillis = System.currentTimeMillis();
 
-    private long startTime = System.nanoTime();
-
-    public Light(int lightCharge, Sprite sprite, int totalFrames) {
+    public Light(Sprite sprite, int totalFrames, float chargeTime) {
         super(sprite, totalFrames);
-//        Battery battery = new Battery();
-        this.maxLightCharge = lightCharge;
-        this.lightCharge = maxLightCharge;
-        canTurnLightOn = true;
-        lightOn = false;
+        this.timeOn = chargeTime;
     }
 
     @Override
     public void keyPressed(int keyCode, char key) {
-        if (keyCode == ' ' && canTurnLightOn) {
+        if (keyCode == ' ') {
             lightOn = !lightOn;
             nextFrame();
         }
@@ -37,20 +32,11 @@ public class Light extends AnimatedSpriteObject {
 
     @Override
     public void update() {
-        // Gebruik alarm
-//        final long time = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime() - startTime);
-//        System.out.println(lightCharge);
-//        if (lightOn) {
-//            if (lightCharge <= 0) {
-//                lightOn = false;
-//                nextFrame();
-//            } else {
-//                lightCharge -= time;
-//            }
-//        } else if (lightCharge < maxLightCharge) {
-//            canTurnLightOn = false;
-//        } else {
-//            canTurnLightOn = true;
-//        }
+        if (lightOn) {
+            if ((float) (System.currentTimeMillis() - previousMillis) / 1000 >= timeOn) {
+                lightOn = false;
+                nextFrame();
+            }
+        } else previousMillis = System.currentTimeMillis();
     }
 }

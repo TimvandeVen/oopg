@@ -19,7 +19,7 @@ public class Player extends SpriteObject implements ICollidableWithGameObjects, 
     private final Pathfinder main;
 
     // Store start location
-    public Location startLocation;
+    public final Location startLocation;
 
     // Store player location
     public Location location;

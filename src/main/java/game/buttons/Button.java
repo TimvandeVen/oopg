@@ -6,6 +6,7 @@ import processing.core.PConstants;
 
 /**
  * Superclass for buttons.
+ *
  * @author Tim van de Ven
  * @version 1.1
  * @since 25-05-2020

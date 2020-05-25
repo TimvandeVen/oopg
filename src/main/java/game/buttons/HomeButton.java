@@ -2,23 +2,22 @@ package game.buttons;
 
 import engine.objects.Sprite;
 import game.Pathfinder;
+import game.menus.StartMenu;
 
-public class LevelButton extends Button {
+public class HomeButton extends Button {
 
     // Reference to main engine class
     private final Pathfinder main;
 
-    // Level ID
-    private final int id;
-
-    public LevelButton(Pathfinder main, Sprite sprite, int totalFrames, int id) {
+    public HomeButton(Pathfinder main, Sprite sprite, int totalFrames) {
         super(sprite, totalFrames);
         this.main = main;
-        this.id = id;
     }
 
+    @Override
     protected void buttonAction() {
-        main.loadLevel(id);
+        main.deleteAllGameOBjects();
+        new StartMenu(main).loadButtons();
     }
 
     @Override
