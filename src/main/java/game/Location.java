@@ -2,14 +2,15 @@ package game;
 
 public class Location {
 
-    // X location
     public int x;
-
-    // Y location
     public int y;
 
     public Location(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Location add(Location direction) {
+        return new Location(x + direction.x, y + direction.y);
     }
 }

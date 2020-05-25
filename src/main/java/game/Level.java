@@ -1,65 +1,53 @@
 package game;
 
-import game.buttons.threadButton;
+import engine.dashboard.FPSCounter;
+import engine.objects.Sprite;
+import engine.tile.Tile;
 
-/**
- * Level class
- *
- * @author Tim van de Ven
- * @version 1.0
- */
 public class Level {
 
-    // Call methods from main
+    // Reference to main engine class
     private final Pathfinder main;
 
-    // Player
+    // Player object
     private final Player player;
 
-    // Current level ID
+    // Goal object
+    private final Goal goal;
+
+    // Current ID
     private final int currentLevel;
 
-    /**
-     * Constructor for Level class.
-     *
-     * @param main
-     * @param id
-     * @param playerPos
-     * @since 1.0
-     */
-    public Level(Pathfinder main, int id, Location playerPos) {
-        this.player = new Player(main, playerPos);
-        this.currentLevel = id;
+    // Light Charge
+    private final int lightCharge;
+
+    public Level(Pathfinder main, int time, int lightCharge, int id, Location playerLocation, Location goalLocation) {
         this.main = main;
+        this.currentLevel = id;
+        this.player = new Player(main, playerLocation);
+        this.goal = new Goal(main, goalLocation);
+        this.lightCharge = lightCharge;
 
         setupLevel();
+        setupCountdown();
     }
 
-    /**
-     * Initializes the player in the level.
-     *
-     * @since 1.0
-     */
     private void setupLevel() {
-        main.addGameObject(new threadButton(main), Pathfinder.width - Pathfinder.TILE_SIZE - 10, 10, 5);
-        main.addGameObject(player, player.location.x * Pathfinder.TILE_SIZE, player.location.y * Pathfinder.TILE_SIZE, 2);
+        // FPS Counter
+        main.addGameObject(new FPSCounter(10, 20), 5);
+        // Light
+        main.addGameObject(new Light(lightCharge, new Sprite(Pathfinder.MEDIA_URL.concat("light.png")), 2));
+        // Player
+        main.addGameObject(player, 1);
+        // Goal
+        main.addGameObject(goal, 0);
     }
 
-    /**
-     * @return If current level is complete or not
-     * @since 1.0
-     */
-    public boolean levelComplete() {
-        return false;
+    private void setupCountdown() {
+
     }
 
-    /**
-     * Returns the ID of the current level.
-     *
-     * @return Current level ID
-     */
-    public int getCurrentLevel() {
-        return this.currentLevel;
+    public Tile getTileAtLocation(Location tileLocation) {
+        return main.getTileMap().getTileOnIndex(tileLocation.x, tileLocation.y);
     }
-
 }
