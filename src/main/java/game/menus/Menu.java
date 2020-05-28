@@ -9,7 +9,7 @@ public abstract class Menu {
         // Create and add Title
         TextObject title = new TextObject("Pathfinder", 80);
         title.setForeColor(255, 255, 255, 255);
-        main.addGameObject(title, 600, 40);
+        main.addGameObject(title, 590, 40);
     }
 
     public abstract void loadButtons();

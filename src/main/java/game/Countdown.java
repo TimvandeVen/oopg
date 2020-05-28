@@ -10,7 +10,7 @@ public class Countdown extends GameObject {
     private final Pathfinder main;
 
     // Game Time
-    private int time;
+    private final int time;
 
     // Start time
     private final long previousMillis = System.currentTimeMillis();

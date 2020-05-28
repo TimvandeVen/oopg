@@ -15,7 +15,7 @@ public class RetryButton extends Button {
 
     @Override
     protected void buttonAction() {
-        main.loadLevel(main.level.currentLevel);
+//        main.loadLevel(main.level.currentLevel);
     }
 
     @Override

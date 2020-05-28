@@ -8,11 +8,11 @@ public class Level {
     // Reference to main engine class
     private final Pathfinder main;
 
-    public Level(Pathfinder main, int id, int gameTime, float batteryTime, Location playerLocation, Location goalLocation) {
+    public Level(Pathfinder main, int gameTime, float batteryTime, float rechargeTime, Location playerLocation, Location goalLocation) {
         this.main = main;
 
         // Light
-        Light light = new Light(new Sprite(Pathfinder.MEDIA_URL.concat("light.png")), 2, 0.5f);
+        Light light = new Light(new Sprite(Pathfinder.MEDIA_URL.concat("light.png")), 2, batteryTime, rechargeTime);
         main.addGameObject(light);
 
         // Battery
