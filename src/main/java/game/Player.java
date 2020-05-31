@@ -13,17 +13,27 @@ import processing.core.PConstants;
 
 import java.util.List;
 
+/**
+ * Sprite object of the player object. <br>
+ * Implements colliding classes.
+ *
+ * @author Tim van de Ven
+ */
 public class Player extends SpriteObject implements ICollidableWithGameObjects, ICollidableWithTiles {
-
-    // Reference to main engine class
-    private final Pathfinder main;
 
     // Store start location
     public final Location startLocation;
-
+    // Reference to game engine class
+    private final Pathfinder main;
     // Store player location
     public Location location;
 
+    /**
+     * Constructor for the player class.
+     *
+     * @param main          reference to the game engine class.
+     * @param startLocation starting location of the player.
+     */
     public Player(Pathfinder main, Location startLocation) {
         super(new Sprite(Pathfinder.MEDIA_URL.concat("player.png")));
         this.main = main;
@@ -31,6 +41,12 @@ public class Player extends SpriteObject implements ICollidableWithGameObjects, 
         this.startLocation = startLocation;
     }
 
+    /**
+     * Checks if the movement keys are pressed.
+     *
+     * @param keyCode code of the key that is pressed.
+     * @param key     char of the key that is pressed
+     */
     @Override
     public void keyPressed(int keyCode, char key) {
         Location direction = new Location(0, 0);
@@ -46,6 +62,11 @@ public class Player extends SpriteObject implements ICollidableWithGameObjects, 
         moveInDirection(direction);
     }
 
+    /**
+     * Moves the location of the player in te specified direction.
+     *
+     * @param direction direction that the player is moving in.
+     */
     private void moveInDirection(Location direction) {
         Location newLocation = location.add(direction);
         Tile tileAtLocation = main.level.getTileAtLocation(newLocation);
@@ -54,6 +75,12 @@ public class Player extends SpriteObject implements ICollidableWithGameObjects, 
         }
     }
 
+    /**
+     * Checks if the player collides with the goal object. <br>
+     * The game is won when true.
+     *
+     * @param collidedGameObjects The GameObjects with which a collision should be detected
+     */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         for (GameObject object : collidedGameObjects) {
@@ -64,6 +91,12 @@ public class Player extends SpriteObject implements ICollidableWithGameObjects, 
         }
     }
 
+    /**
+     * Checks if the player is walking on a hole tile. <br>
+     * Resets the player when true.
+     *
+     * @param collidedTiles The tiles with which a collision should be detected
+     */
     @Override
     public void tileCollisionOccurred(List<CollidedTile> collidedTiles) {
         for (CollidedTile tile : collidedTiles) {
@@ -74,6 +107,9 @@ public class Player extends SpriteObject implements ICollidableWithGameObjects, 
         }
     }
 
+    /**
+     * Updates the actual location x and y of the player over the tile map.
+     */
     @Override
     public void update() {
         this.x = Pathfinder.TILE_SIZE * location.x;

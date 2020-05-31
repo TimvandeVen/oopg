@@ -12,11 +12,10 @@ import game.tiles.HoleTile;
 import game.tiles.WallTile;
 
 /**
- * Functions as main engine class.
+ * Functions as main engine class. <br>
+ * Calls the level class and sets the game up.
  *
  * @author Tim van de Ven
- * @version 1.0
- * @since 25-05-2020
  */
 public class Pathfinder extends GameEngine {
 
@@ -35,16 +34,26 @@ public class Pathfinder extends GameEngine {
 
     // Current level
     public Level level;
+    public int currentLevel;
 
     // Game status
     public boolean levelComplete;
     public boolean levelFailed;
 
+    /**
+     * Runs the processing sketch.
+     *
+     * @param args standard java parameter
+     */
     public static void main(String[] args) {
         Pathfinder main = new Pathfinder();
         main.runSketch();
     }
 
+    /**
+     * Main setup class, used by the game engine. <br>
+     * Sets the view, tiles and start menu up.
+     */
     @Override
     public void setupGame() {
         setupView();
@@ -53,6 +62,9 @@ public class Pathfinder extends GameEngine {
         new StartMenu(this).loadButtons();
     }
 
+    /**
+     * Setup view and background of the game.
+     */
     private void setupView() {
         View view = new View(width, height);
 
@@ -62,6 +74,10 @@ public class Pathfinder extends GameEngine {
         view.setBackground(14, 14, 14);
     }
 
+    /**
+     * Initializes sprites for the tiles. <br>
+     * Setup tileTypes with the sprites for the tileMap to use.
+     */
     private void setupTiles() {
         // Setup tile Sprites
         Sprite wallSprite = new Sprite(Pathfinder.MEDIA_URL.concat("wallTile.png"));
@@ -74,6 +90,13 @@ public class Pathfinder extends GameEngine {
         this.tileTypes[2] = new TileType<>(HoleTile.class, holeSprite);
     }
 
+    /**
+     * Deletes all previous game objects. <br>
+     * Sets the tileMap. <br>
+     * Loads and sets new level with all needed specifications.
+     *
+     * @param id level id.
+     */
     public void loadLevel(int id) {
         deleteAllGameOBjects();
         switch (id) {
@@ -106,6 +129,9 @@ public class Pathfinder extends GameEngine {
 
                 // Initialize level
                 this.level = new Level(this, 60, 1.5f, 1f, playerLocation, goalLocation);
+
+                // Sets the current level to the level id
+                this.currentLevel = id;
             }
             break;
             case 1: {
@@ -137,6 +163,9 @@ public class Pathfinder extends GameEngine {
 
                 // Initialize level
                 this.level = new Level(this, 60, 1f, 2f, playerLocation, goalLocation);
+
+                // Sets the current level to the level id
+                this.currentLevel = id;
             }
             break;
             case 2: {
@@ -168,11 +197,19 @@ public class Pathfinder extends GameEngine {
 
                 // Initialize level
                 this.level = new Level(this, 60, 0.5f, 3f, playerLocation, goalLocation);
+
+                // Sets the current level to the level id
+                this.currentLevel = id;
             }
             break;
         }
     }
 
+    /**
+     * Checks if the level is done. <br>
+     * Removes all existing objects. <br>
+     * Loads the end menu.
+     */
     @Override
     public void update() {
         if (levelComplete || levelFailed) {
@@ -188,6 +225,11 @@ public class Pathfinder extends GameEngine {
         }
     }
 
+    /**
+     * Returns an empty array to display the background.
+     *
+     * @return tile map with -1 on every location.
+     */
     private int[][] emptyTileMap() {
         int[][] emptyTileMap = new int[25][14];
         for (int i = 0; i < 25; i++) {

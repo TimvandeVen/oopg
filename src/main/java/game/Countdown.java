@@ -4,9 +4,14 @@ import engine.objects.GameObject;
 import engine.objects.TextObject;
 import processing.core.PGraphics;
 
+/**
+ * Countdown class displays the remaining time of the game.
+ *
+ * @author Tim van de Ven
+ */
 public class Countdown extends GameObject {
 
-    // Reference to main engine class
+    // Reference to game engine class
     private final Pathfinder main;
 
     // Game Time
@@ -18,6 +23,12 @@ public class Countdown extends GameObject {
     // Text object
     TextObject countdown;
 
+    /**
+     * Constructor for the countdown class.
+     *
+     * @param main reference to game engine class.
+     * @param time total time of a level.
+     */
     public Countdown(Pathfinder main, int time) {
         this.main = main;
         this.time = time;
@@ -27,9 +38,12 @@ public class Countdown extends GameObject {
         main.addGameObject(countdown, 745, 20);
     }
 
+    /**
+     * Counts down from the start time and displays the remaining time on the screen.
+     */
     @Override
     public void update() {
-        int millis = (int)(System.currentTimeMillis() - previousMillis) / 1000;
+        int millis = (int) (System.currentTimeMillis() - previousMillis) / 1000;
         int counter = time - millis;
 
         countdown.setText(String.valueOf(counter));
@@ -39,6 +53,11 @@ public class Countdown extends GameObject {
         }
     }
 
+    /**
+     * Empty.
+     *
+     * @param g PGraphics object will be given by the GameEngine.
+     */
     @Override
     public void draw(PGraphics g) {
 
